@@ -8,16 +8,15 @@ const mongoose = require('mongoose');
 chai.use(chaiHttp);
 chai.use(chaiString);
 
-describe('user API functionalities', function() {
+before(function(done) {
+	mongoose.Promise = global.Promise;
+	mongoose.set('useFindAndModify', false);
+	mongoose.set('useNewUrlParser', true);
+	mongoose.set('useCreateIndex', true);
+	mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema_test', done);
+});
 
-	before(function(done) {
-		mongoose.Promise = global.Promise;
-		mongoose.set('useFindAndModify', false);
-		mongoose.set('useNewUrlParser', true);
-		mongoose.set('useCreateIndex', true);
-		mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema_test');
-		done();
-	});
+describe('user API functionalities', function() {
 
 	it('should register a new user', function(done) {
 		let user = {

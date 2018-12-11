@@ -8,6 +8,14 @@ const mongoose = require('mongoose');
 chai.use(chaiHttp);
 chai.use(chaiString);
 
+before(function(done) {
+	mongoose.Promise = global.Promise;
+	mongoose.set('useFindAndModify', false);
+	mongoose.set('useNewUrlParser', true);
+	mongoose.set('useCreateIndex', true);
+	mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema_test', done);
+});
+
 describe('cinema API functionalities', function() {
 
 	var token;
@@ -15,13 +23,6 @@ describe('cinema API functionalities', function() {
 
 	before(function(done) {
 
-		mongoose.Promise = global.Promise;
-		mongoose.set('useFindAndModify', false);
-		mongoose.set('useNewUrlParser', true);
-		mongoose.set('useCreateIndex', true);
-		mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema_test');
-
-		this.timeout(5000);
 		let user = {
 			'username': 'test',
 			'password': 'test'
