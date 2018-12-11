@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport =  require('passport');
 
-const config = require('./config');
 const routes = require('./api/routes');
 const authroutes = require('./api/authroutes');
 
@@ -29,11 +28,11 @@ mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
-mongoose.connect(config.mongoURI[process.env.NODE_ENV], function(error, result) {
+mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema', function(error, result) {
 	if (error) {
 		console.log('Error connecting to the database. ' + err);
 	} else {
-		console.log('Connected to database: ' + config.mongoURI[app.settings.env]);
+		console.log('Connected to database cinema');
 	}
 });
 

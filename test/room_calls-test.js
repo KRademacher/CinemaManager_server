@@ -1,10 +1,9 @@
-process.env.NODE_ENV = 'test';
-
-var chai = require('chai');
-var chaiHttp = require('chai-http');
-var chaiString = require('chai-string');
-var server = require('../server');
-var chould = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const chaiString = require('chai-string');
+const server = require('../server');
+const chould = chai.should();
+const mongoose = require('mongoose');
 
 chai.use(chaiHttp);
 chai.use(chaiString);
@@ -16,6 +15,13 @@ describe('room API functionalities', function() {
 	var roomId;
 
 	before(function(done) {
+
+		mongoose.Promise = global.Promise;
+		mongoose.set('useFindAndModify', false);
+		mongoose.set('useNewUrlParser', true);
+		mongoose.set('useCreateIndex', true);
+		mongoose.connect('mongodb://admin:admin12345@ds231374.mlab.com:31374/cinema_test');
+
 		let user = {
 			'username': 'test',
 			'password': 'test'
