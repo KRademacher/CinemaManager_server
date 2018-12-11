@@ -29,7 +29,7 @@ mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
-mongoose.connect(config.mongoURI[app.settings.env], function(error, result) {
+mongoose.connect(config.mongoURI[process.env.NODE_ENV], function(error, result) {
 	if (error) {
 		console.log('Error connecting to the database. ' + err);
 	} else {
