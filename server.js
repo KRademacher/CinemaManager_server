@@ -1,3 +1,5 @@
+//Server made by Kevin Rademacher
+//Student code 2124312
 const express = require('express');
 const http = require('http');
 const mongoose = require('mongoose');
