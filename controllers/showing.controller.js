@@ -104,7 +104,7 @@ module.exports = {
 	},
 
 	get(req, res, next) {
-		Cinema.findOne({ _id: req.params.cinemaId })
+		Cinema.findOne({ name: req.params.name })
 			.then((cinema) => {
 				if (!cinema) {
 					res.status(400).send({ Error: 'Cinema not found.' });
@@ -133,7 +133,7 @@ module.exports = {
 
 	getById(req, res, next) {
 
-		Cinema.findOne({ _id: req.params.cinemaId })
+		Cinema.findOne({ name: req.params.cinemaName })
 			.then((cinema) => {
 				if (!cinema) {
 					res.status(400).send({ Error: 'Cinema not found.' });
@@ -162,7 +162,7 @@ module.exports = {
 
 	getByName(req, res, next) {
 
-		Cinema.findOne({ _id: req.params.cinemaId })
+		Cinema.findOne({ name: req.params.cinemaName })
 			.then((cinema) => {
 				if (!cinema) {
 					res.status(400).send({ Error: 'Cinema not found.' });

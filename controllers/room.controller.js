@@ -87,7 +87,7 @@ module.exports = {
 
 	getById(req, res, next) {
 
-		Cinema.findOne({ _id: req.params.cinemaId })
+		Cinema.findOne({ name: req.params.cinemaName })
 			.then((cinema) => {
 				if (!cinema) {
 					res.status(400).send({ Error: 'Cinema not found.' });

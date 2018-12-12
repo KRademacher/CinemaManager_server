@@ -78,7 +78,7 @@ module.exports = {
 
 	getByName(req, res, next) {
 
-		Cinema.findOne({ name: req.body.name })
+		Cinema.findOne({ name: req.params.name })
 			.then((cinema) => {
 				if (!cinema) {
 					res.status(400).send({ Error: 'Cinema not found.' });
